@@ -1,8 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from plot import myplot as mplt
+# from plot import myplot as mplt
+from plot.myplot import MyPlot
 
-class SourceElem(mplt.MyPlot):
+class SourceElem(MyPlot):
     def __init__(self, xmin: float, xmax: float, ymin: float, ymax: float, nstep: int,
                     q:float, a:float, b:float) -> None:
         
@@ -18,14 +19,14 @@ class SourceElem(mplt.MyPlot):
 
 
     def _calc_psi(self) -> np.array:
-        return (self.q/(2*np.pi))*np.arctan2(self.y-self.b,self.x-self.a)
+        return (self.q/(2*np.pi))*np.arctan2(self.y-self.b, self.x-self.a)
 
 
     def _calc_phi(self) -> np.array:
         return (self.q/(2*np.pi))*np.log(np.sqrt((self.x-self.a)**2 + (self.y-self.b)**2))
 
 
-class UniformFlow(mplt.MyPlot):
+class UniformFlow(MyPlot):
     def __init__(self, xmin: float, xmax: float, ymin: float, ymax: float, nstep: int,
                     u:float, v:float) -> None:
         
@@ -43,7 +44,7 @@ class UniformFlow(mplt.MyPlot):
         return self.u * self.x + self.v * self.y
 
 
-class RankineHalfBody(mplt.MyPlot):
+class RankineHalfBody(MyPlot):
     def __init__(self, xmin: float, xmax: float, ymin: float, ymax: float, nstep: int, 
                     u: float, v: float, q: float, a: float, b: float) -> None:
         
